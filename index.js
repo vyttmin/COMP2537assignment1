@@ -62,18 +62,6 @@ app.get('/', (req, res) => {
     }
 });
 
-
-app.post('/submitEmail', (req, res) => {
-    var email = req.body.email;
-    if (!email) {
-        res.redirect('/contact?missing=1');
-    }
-    else {
-        res.send("Thanks for subscribing with your email: " + email);
-    }
-});
-
-
 app.get('/createUser', (req, res) => {
     var html = `
     Sign Up:
