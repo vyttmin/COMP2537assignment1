@@ -14,7 +14,7 @@ const app = express();
 const Joi = require("joi");
 
 
-const expireTime = 1 * 60 * 60 * 1000; //expires after 1 day  (hours * minutes * seconds * millis)
+const expireTime = 1 * 60 * 60 * 1000; //expires after 1 hour  (hours * minutes * seconds * millis)
 
 /* secret information section */
 const mongodb_host = process.env.MONGODB_HOST;
@@ -63,8 +63,6 @@ app.get('/', (req, res) => {
 });
 
 
-
-
 app.post('/submitEmail', (req, res) => {
     var email = req.body.email;
     if (!email) {
@@ -91,17 +89,15 @@ app.get('/createUser', (req, res) => {
     res.send(html);
 });
 
-
-
 app.get('/login', (req, res) => {
     var html = `
-                log in
-                <form action='/loggingin' method='post'>
-                <input name='email' type='text' placeholder='email'>
-                <input name='password' type='password' placeholder='password'>
-                <button>Submit</button>
-                </form>
-                `;
+        log in
+        <form action='/loggingin' method='post'>
+        <input name='email' type='text' placeholder='email'>
+        <input name='password' type='password' placeholder='password'>
+        <button>Submit</button>
+        </form>
+        `;
     res.send(html);
 });
 
@@ -228,10 +224,6 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 });
-
-
-
-
 
 
 app.use(express.static(__dirname + "/public"));
