@@ -185,15 +185,15 @@ app.get('/members', (req, res) => {
     if (!req.session.authenticated) {
         res.redirect('/');
     } else {
-        const catImages = [
+        const pokemonImages = [
             { name: 'Bulbasaur', src: '/pokemon01.png' },
             { name: 'Charmander', src: '/pokemon02.png' },
             { name: 'Squirtle', src: '/pokemon03.png' },
         ];
 
         function getRandomImage() {
-            const randomIndex = Math.floor(Math.random() * catImages.length);
-            return catImages[randomIndex];
+            const randomIndex = Math.floor(Math.random() * pokemonImages.length);
+            return pokemonImages[randomIndex];
         }
 
         const img = getRandomImage();
